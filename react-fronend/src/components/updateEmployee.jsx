@@ -40,31 +40,41 @@ const UpdateEmployee = () => {
   return (
     <div className="container mt-4 border border-rounded">
       <h2>Update Employee</h2>
-      <br/><br/>
-      <form >
-        Employee FirstName: <input
+      <br />
+      <br />
+      <form>
+        Employee FirstName:{" "}
+        <input
           type="text"
           name="firstname"
-          value={employee.firstname}
           placeholder="First Name"
           onChange={handleChange}
-        /><br/><br/>
-       Employee LastName:  <input       type="text"
+        />
+        <br />
+        <br />
+        Employee LastName:{" "}
+        <input
+          type="text"
           name="lastname"
-          value={employee.lastname}
           placeholder="Last Name"
           onChange={handleChange}
-        /><br/><br/>
-       Employee Email:  <input
+        />
+        <br />
+        <br />
+        Employee Email:
+        <input
           type="email"
           name="email"
-          value={employee.email}
           placeholder="Email"
           onChange={handleChange}
-        /><br/><br/>
-        <button className="btn btn-primary" onClick={updateEmployee}>Update</button>
+        />
+        <br />
+        <br />
+        <button className="btn btn-primary" onClick={updateEmployee}>
+          Update
+        </button>
       </form>
-      <br/>
+      <br />
     </div>
   );
 };
