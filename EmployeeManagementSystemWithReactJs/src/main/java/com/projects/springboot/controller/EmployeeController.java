@@ -37,28 +37,35 @@ public class EmployeeController {
 
 	}
 
-	   // Add new employee
-    @PostMapping
-    public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeRepository.save(employee);
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+		Employee employee = employeeRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
+		return ResponseEntity.ok(employee);
+	}
 
-    // Update employee
-    @PutMapping("/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
-        Employee employee = employeeRepository.findById(id).orElseThrow();
-        employee.setFirstname(employeeDetails.getFirstname());
-        employee.setLastname(employeeDetails.getLastname());
-        employee.setEmail(employeeDetails.getEmail());
-        Employee updatedEmployee = employeeRepository.save(employee);
-        return ResponseEntity.ok(updatedEmployee);
-    }
+	// Add new employee
+	@PostMapping
+	public Employee createEmployee(@RequestBody Employee employee) {
+		return employeeRepository.save(employee);
+	}
 
-    // Delete employee
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
-        Employee employee = employeeRepository.findById(id).orElseThrow();
-        employeeRepository.delete(employee);
-        return ResponseEntity.noContent().build();
-    }
+	// Update employee
+	@PutMapping("/{id}")
+	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
+		Employee employee = employeeRepository.findById(id).orElseThrow();
+		employee.setFirstname(employeeDetails.getFirstname());
+		employee.setLastname(employeeDetails.getLastname());
+		employee.setEmail(employeeDetails.getEmail());
+		Employee updatedEmployee = employeeRepository.save(employee);
+		return ResponseEntity.ok(updatedEmployee);
+	}
+
+	// Delete employee
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
+		Employee employee = employeeRepository.findById(id).orElseThrow();
+		employeeRepository.delete(employee);
+		return ResponseEntity.noContent().build();
+	}
 }
