@@ -1,23 +1,38 @@
 import axios from "axios";
 
-const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/employees";
+const API_URL = "http://localhost:8080/api/employees";
 
+// Fetch all employees
+const getEmployees = () => {
+  return axios.get(API_URL);
+};
 
-class EmployeeService {
-  getEmployees() {
-    return axios.get(EMPLOYEE_API_BASE_URL);
-  }
-  createEmployee(employee) {
-    return axios.post(EMPLOYEE_API_BASE_URL, employee);
-}
+// Fetch a single employee by ID
+const getEmployee = (id) => {
+  return axios.get(`${API_URL}/${id}`);
+};
 
-updateEmployee(id, employee) {
-    return axios.put(`${EMPLOYEE_API_BASE_URL}/${id}`, employee);
-}
+// Create a new employee
+const createEmployee = (employee) => {
+  return axios.post(API_URL, employee);
+};
 
-deleteEmployee(id) {
-    return axios.delete(`${EMPLOYEE_API_BASE_URL}/${id}`);
-}
-}
-const instance=new EmployeeService();
-export default instance;
+// Update an existing employee by ID
+const updateEmployee = (id, employee) => {
+  return axios.put(`${API_URL}/${id}`, employee);
+};
+
+// Delete an employee by ID
+const deleteEmployee = (id) => {
+  return axios.delete(`${API_URL}/${id}`);
+};
+
+const EmployeeService = {
+  getEmployees,
+  getEmployee, // Make sure this function is exported
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
+};
+
+export default EmployeeService;
