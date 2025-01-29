@@ -38,6 +38,7 @@ const UpdateEmployee = () => {
   };
 
   return (
+    <div class="container">
     <div className="container mt-4 border border-rounded">
       <h2>Update Employee</h2>
       <br />
@@ -76,6 +77,10 @@ const UpdateEmployee = () => {
       </form>
       <br />
     </div>
+     <div className="d-flex justify-content-end"> <button className="btn btn-primary mt-2 " onClick={() => navigate("/")}>
+     Back to List
+   </button></div>
+   </div>
   );
 };
 

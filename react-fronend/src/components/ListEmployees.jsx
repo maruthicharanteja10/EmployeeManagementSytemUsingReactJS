@@ -49,20 +49,24 @@ const ListEmployees = () => {
               <td>{employee.firstname}</td>
               <td>{employee.lastname}</td>
               <td>{employee.email}</td>
-              <td>
+              <td className="justify-content-center">
                 <button
                   onClick={() => editEmployee(employee.id)}
                   className="btn btn-warning "
                 >
                   Update
                 </button>
-                
+
                 <button
                   onClick={() => deleteEmployee(employee.id)}
                   className="btn btn-danger "
                 >
                   Delete
                 </button>
+                <button onClick={() => navigate(`/view/${employee.id}`)} className="btn btn-info">
+    View
+</button>
+
               </td>
             </tr>
           ))}
