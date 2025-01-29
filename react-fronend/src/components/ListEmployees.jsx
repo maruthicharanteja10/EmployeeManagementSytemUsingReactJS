@@ -27,7 +27,7 @@ const ListEmployees = () => {
 
   return (
     <div className="container">
-      <h2 className="text-center">Employees List</h2>
+      <h2 className="text-center mt-3">List of Employees</h2>
       <button className="btn btn-primary" onClick={() => navigate("/add")}>
         Add Employee
       </button>
@@ -52,13 +52,14 @@ const ListEmployees = () => {
               <td>
                 <button
                   onClick={() => editEmployee(employee.id)}
-                  className="btn btn-warning"
+                  className="btn btn-warning "
                 >
                   Update
                 </button>
+                
                 <button
                   onClick={() => deleteEmployee(employee.id)}
-                  className="btn btn-danger"
+                  className="btn btn-danger "
                 >
                   Delete
                 </button>
